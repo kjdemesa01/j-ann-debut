@@ -1,0 +1,147 @@
+:root {
+  --ink: #51376b;
+  --title: #583878;
+  --primary: #76519a;
+  --primary-light: #9b6bc9;
+  --glass: rgba(255, 255, 255, 0.62);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --shadow-soft: 0 20px 50px rgba(77, 48, 102, 0.16);
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-hand: 'Caveat', 'Segoe Script', cursive;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: #dfccef;
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* let the FloatingHearts background show through Vuetify */
+.v-application,
+.v-application__wrap {
+  background: transparent !important;
+  font-family: var(--font-body) !important;
+}
+
+button {
+  font-family: inherit;
+}
+
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--title);
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+/* ---------- shared buttons ---------- */
+
+.continue-button,
+.ghost-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 14px 30px;
+
+  border: none;
+  border-radius: 999px;
+
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.continue-button {
+  color: #fff;
+  background: linear-gradient(135deg, #9b6bc9, #6f47a3);
+  box-shadow:
+    0 10px 24px rgba(111, 71, 163, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.ghost-button {
+  color: var(--title);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 20px rgba(77, 48, 102, 0.12);
+}
+
+.continue-button span {
+  transition: transform 0.2s ease;
+}
+
+@media (hover: hover) {
+  .continue-button:hover,
+  .ghost-button:hover {
+    transform: translateY(-2px);
+  }
+
+  .continue-button:hover span {
+    transform: translateX(3px);
+  }
+}
+
+.continue-button:active,
+.ghost-button:active {
+  transform: scale(0.96);
+}
+
+/* ---------- page transition ---------- */
+
+.page-enter-active,
+.page-leave-active {
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
